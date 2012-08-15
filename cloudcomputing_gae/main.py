@@ -64,7 +64,7 @@ def check_login(name, password):
 @route('/newtask')
 def newtask():
     username = request.get_cookie("account", secret='secret-key')
-    if 1 or username:
+    if username:
         data = get_s3_data()
         return template('./templates/newtask.tpl', datas=data['name'], Context='You can create a new task now!')
     else:
@@ -73,7 +73,7 @@ def newtask():
 @route('/newtask', method='POST')
 def new_submit():
     username = request.get_cookie("account", secret='secret-key')
-    if 1 or username:
+    if username:
         tname = request.forms.get('tname')
         tno = request.forms.get('tno')
         ttype = request.forms.get('ttype')
@@ -87,7 +87,7 @@ def new_submit():
 @route('/existtask')
 def existingtask():
     username = request.get_cookie("account", secret='secret-key')
-    if 1 or username:
+    if username:
         message ='getall'
         reply = ping(message,'')
         data = reply.split(';')
@@ -100,7 +100,7 @@ def existingtask():
 @route('/taskchange',method = 'POST')
 def changetask():
     username = request.get_cookie("account", secret='secret-key')
-    if 1 or username:
+    if username:
         message ='changetask'
         taction =''
         reply = ping('getall','')
@@ -120,8 +120,12 @@ def changetask():
 
 @route('/storage')
 def result():
-    data = get_s3_data()
-    return template('./templates/storage.tpl', Context='You have following data in cloud!', datas_time = data['time'], datas_name = data['name'])
+    username = request.get_cookie("account", secret='secret-key')
+    if username:
+        data = get_s3_data()
+        return template('./templates/storage.tpl', Context='You have following data in cloud!', datas_time = data['time'], datas_name = data['name'])
+    else:
+        return template('./templates/home.tpl', Data='Login Fail!') 
 
 @route('/upload', method='POST')
 def do_upload():
