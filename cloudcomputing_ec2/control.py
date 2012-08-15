@@ -13,8 +13,8 @@ from boto.sqs.message import Message
 import time
 import boto
 
-AWS_ACCESS_KEY_ID='AKIAIXQ2HHDWHV6BCANA'
-AWS_SECRET_ACCESS_KEY='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'
+AWS_ACCESS_KEY_ID='AWS_ACCESS_KEY_ID'
+AWS_SECRET_ACCESS_KEY='AWS_SECRET_ACCESS_KEY'
 
 def run_newtask(info):
     task = info.split('|')

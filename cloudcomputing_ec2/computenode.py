@@ -12,12 +12,12 @@ from boto.sqs.connection import SQSConnection
 import compute
 import time
 
-Node_Id = 2
+Node_Id = 1
 SQS_Id = 'NewTaskForNode' + str(Node_Id)
 Pull_period = 10
 
-AWS_ACCESS_KEY_ID='AKIAIXQ2HHDWHV6BCANA'
-AWS_SECRET_ACCESS_KEY='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'
+AWS_ACCESS_KEY_ID='AWS_ACCESS_KEY_ID'
+AWS_SECRET_ACCESS_KEY='AWS_SECRET_ACCESS_KEY'
 
 conn = SQSConnection(AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY)
 my_queue = conn.get_queue(SQS_Id)

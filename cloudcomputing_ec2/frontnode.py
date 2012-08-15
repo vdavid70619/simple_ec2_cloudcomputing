@@ -57,6 +57,6 @@ class PostHandler(BaseHTTPRequestHandler):
 
 if __name__ == '__main__':
     from BaseHTTPServer import HTTPServer
-    server = HTTPServer(('10.212.129.204', 1234), PostHandler)
+    server = HTTPServer(('ec2_ip', 1234), PostHandler)
     print 'Starting server, use <Ctrl-C> to stop'
     server.serve_forever()
