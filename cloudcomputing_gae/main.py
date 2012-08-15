@@ -164,7 +164,7 @@ def get_s3_data():
     return {'name':datas_name, 'time':datas_time}
 
 def ping(message,info):    
-    url = 'http://ec2-50-17-97-192.compute-1.amazonaws.com:1234'
+    url = 'http://ec2_ip:1234'
     parameters = {'message':message, 'info':info}
     info = submitInformation(url,parameters);
     print(info);
